@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src='tldreply.js'> 
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+  </head>
+  <body>
+
+
+
+    <div id="authorize-div" style="display: none">
+      <div id="logo">TL;DReply</div>
+      <div id="login-button"> 
+      <button id="authorize-button" class="pure-button pure-button-primary button-xlarge" onclick="handleAuthClick(event)">
+        Login
+      </button>
+    </div>
+    </div>
+    <div id="output"></div>
+    
+  </body>
+</html>

@@ -1,0 +1,40 @@
+#logo {
+  font-size: 15vw;
+  text-align:center
+}
+
+#authorize-button {
+  width: 19vw;
+  height: 10vh;
+  margin: auto;
+  font-size: 5vh;
+}
+
+#login-button {
+  text-align:center;
+}
+
+.pure-button {
+  margin-left: 7px;
+}
+
+body {
+  font-size: 2vw;
+}
+
+h2 {
+  margin-left: 7px;
+}
+
+li {
+  margin-left: 7px;
+}
+
+textarea {
+  margin-left: 7px;
+  margin-top: 7px;
+  width: 40vw;
+  height: 13vw;
+  display: inline-block;
+  vertical-align: middle
+}
