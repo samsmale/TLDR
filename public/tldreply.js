@@ -82,27 +82,33 @@ function getMessage(userId, messageId) {
                 'format': 'full'
   });
   request.execute(function(req, res){
+    var bigDiv = document.createElement("div")
+    bigDiv.className += "pure-g"
+    document.body.appendChild(bigDiv)
     var messageDiv = document.createElement("div");
+    messageDiv.className += "pure-u-1"
     messageDiv.setAttribute("id", messageId);
-    document.body.appendChild(messageDiv);
+    bigDiv.appendChild(messageDiv);
     var resJSON = JSON.parse(res);
     var resObj = resJSON[0].result.payload.parts[0].body.data
     var from = resJSON[0].result.payload.headers[15].value
     var data = atob(resObj)
     var questions = data.match(/(.*)[^! .?]+\?/g)
-    var fromHeading = document.createElement("h2");
+    var fromHeading = document.createElement("div");
+    fromHeading.className += "pure-u-1-2 heading"
     var fromNode = document.createTextNode("From: " + from)
     fromHeading.appendChild(fromNode)
     document.getElementById(messageId).appendChild(fromHeading) 
     for (var i = 0; i < questions.length; i++) {
-      var node = document.createElement("li");
+      var node = document.createElement("div");
+      node.className += "pure-input-1 question"
       var textNode = document.createTextNode(questions[i])
       node.appendChild(textNode)
       document.getElementById(messageId).appendChild(node)
     };
     var textBox = document.createElement("textarea")
     textBox.id = "text"+messageId;
-    textBox.className += "pure-input-1"
+    textBox.className += "pure-input-1 textbox"
     document.getElementById(messageId).appendChild(textBox)
     var button = document.createElement("button")
     button.className += "pure-button pure-button-primary"
