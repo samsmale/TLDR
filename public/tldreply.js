@@ -91,12 +91,23 @@ function getMessage(userId, messageId) {
     bigDiv.appendChild(messageDiv);
     var resJSON = JSON.parse(res);
     var resObj = resJSON[0].result.payload.parts[0].body.data
-    var from = resJSON[0].result.payload.headers[15].value
+    for (var i = 0; i < resJSON[0].result.payload.headers.length; i++) {
+      var headerName = resJSON[0].result.payload.headers[i].name
+      
+      if (headerName === "From" ) {
+        var from = resJSON[0].result.payload.headers[i].value
+        
+      }
+    };
+    console.log(resObj)
     var data = atob(resObj)
+    console.log(resJSON[0].result.payload)
     var questions = data.match(/(.*)[^! .?]+\?/g)
     var fromHeading = document.createElement("div");
-    fromHeading.className += "pure-u-1-2 heading"
-    var fromNode = document.createTextNode("From: " + from)
+    fromHeading.className += "pure-u-1-2 heading";
+    fromName = from.replace(/\<.*?\>/g, "")
+    console.log(fromName)
+    var fromNode = document.createTextNode("From: " + fromName)
     fromHeading.appendChild(fromNode)
     document.getElementById(messageId).appendChild(fromHeading) 
     for (var i = 0; i < questions.length; i++) {
