@@ -103,12 +103,15 @@ function getMessage(userId, messageId) {
     var data = atob(resObj)
     console.log(resJSON[0].result.payload)
     var questions = data.match(/(.*)[^! .?]+\?/g)
+    var spacer = document.createElement("div");
+    spacer.className += "pure-u-1-2 spacer";
     var fromHeading = document.createElement("div");
     fromHeading.className += "pure-u-1-2 heading";
     fromName = from.replace(/\<.*?\>/g, "")
     console.log(fromName)
     var fromNode = document.createTextNode("From: " + fromName)
     fromHeading.appendChild(fromNode)
+    document.getElementById(messageId).appendChild(spacer)
     document.getElementById(messageId).appendChild(fromHeading) 
     for (var i = 0; i < questions.length; i++) {
       var node = document.createElement("div");
